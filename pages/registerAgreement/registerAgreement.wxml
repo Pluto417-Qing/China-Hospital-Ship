@@ -1,0 +1,15 @@
+<view class="agreement-container">
+  <view class="agreement-title">读者注册协议</view>
+  <scroll-view scroll-y="true" class="agreement-content">
+    <text>
+      欢迎注册《中国医院船》读者中心。
+      1. 您填写的信息仅用于本服务号内部管理，不会泄露给第三方。
+      2. 注册前请如实填写个人信息，注册后如需修改请及时更新。
+      3. 注册成功后，系统将自动分配唯一编号。
+      4. 参与活动时请遵守相关规则，违规将取消资格。
+      5. 如需注销账号，后台将保留您的历史数据。
+      6. 其他未尽事宜请参见服务号公告。
+      ...
+    </text>
+  </scroll-view>
+</view> 

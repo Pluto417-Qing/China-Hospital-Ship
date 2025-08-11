@@ -1,0 +1,154 @@
+/* .app-name {
+  font-size: large;
+  margin-top: 200px;
+  margin-bottom: 100px;
+} */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 60rpx 40rpx;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+/* 顶部区域 */
+.auth-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40rpx;
+}
+
+.logo-container {
+  margin-bottom: 30rpx;
+}
+
+.logo-circle {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #42b983, #3eb2a5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 20rpx rgba(66, 185, 131, 0.2);
+}
+
+.logo-inner {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #42b983;
+}
+
+.app-name {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.app-slogan {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 中间内容区域 */
+.auth-content {
+  width: 100%;
+  margin: 60rpx 0;
+}
+
+.feature-list {
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.feature-item:last-child {
+  margin-bottom: 0;
+}
+
+.feature-icon {
+  width: 40rpx;
+  height: 40rpx;
+  background-color: #42b983;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  font-size: 24rpx;
+}
+
+.feature-text {
+  font-size: 30rpx;
+  color: #444;
+}
+
+/* 底部区域 */
+.auth-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-btn {
+  width: 100% !important;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: linear-gradient(to right, #42b983, #3eb2a5);
+  border-radius: 45rpx;
+  font-size: 32rpx;
+  color: #fff;
+  font-weight: normal;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon {
+  margin-right: 10rpx;
+}
+
+.auth-tips {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 返回按钮 */
+.back-btn {
+  width: 100% !important;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #f2f2f2;
+  color: #666;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  margin-top: 30rpx;
+  border: 1px solid #e0e0e0;
+}

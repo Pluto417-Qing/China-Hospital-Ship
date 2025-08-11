@@ -1,0 +1,83 @@
+<view class="container">
+  <form bindsubmit="onSubmit">
+    <view class="form-item avatar-container">
+      <text class="label">头像</text>
+      <view class="avatar-wrapper" bindtap="chooseAvatar">
+        <image class="avatar" src="{{avatarUrl || 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'}}" mode="aspectFill"></image>
+        <view class="upload-text">点击更换头像</view>
+      </view>
+    </view>
+    <view class="form-item">
+      <text class="label">读者昵称</text>
+      <input class="input" placeholder="请输入昵称（仅限汉字）" bindinput="onNicknameInput" value="{{nickname}}" />
+    </view>
+    <view class="form-item">
+      <text class="label">出生年月</text>
+      <picker mode="date" fields="month" bindchange="onBirthChange">
+        <view class="picker">{{birthDate || '请选择出生年月'}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="label">所在省市</text>
+      <picker mode="multiSelector" range="{{regionArray}}" bindchange="onRegionChange" bindcolumnchange="onRegionColumnChange" value="{{regionIndex}}">
+        <view class="picker">{{regionText || '请选择省市'}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="label">当前年级</text>
+      <picker range="{{gradeArray}}" bindchange="onGradeChange" value="{{gradeIndex}}">
+        <view class="picker">{{gradeArray[gradeIndex] || '请选择年级'}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="label">家庭成员</text>
+      <checkbox-group bindchange="onFamilyChange" value="{{selectedFamilyMembers}}">
+        <label wx:for="{{familyArray}}" wx:key="item">
+          <checkbox value="{{item}}" />{{item}}
+        </label>
+      </checkbox-group>
+    </view>
+    <view class="form-item">
+      <text class="label">个人爱好</text>
+      <picker range="{{hobbyArray}}" bindchange="onHobbyChange" value="{{hobbyIndex}}">
+        <view class="picker">{{hobbyArray[hobbyIndex] || '请选择个人爱好'}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="label">健康问题（可多选）</text>
+      <checkbox-group bindchange="onHealthChange" value="{{selectedHealth}}">
+        <label wx:for="{{healthArray}}" wx:key="item">
+          <checkbox value="{{item}}" />{{item}}
+        </label>
+      </checkbox-group>
+    </view>
+    <view class="form-item">
+      <text class="label">性格特征</text>
+      <picker range="{{characterArray}}" bindchange="onCharacterChange" value="{{characterIndex}}">
+        <view class="picker">{{characterArray[characterIndex] || '请选择性格特征'}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="label">身高状况</text>
+      <picker range="{{heightArray}}" bindchange="onHeightChange" value="{{heightIndex}}">
+        <view class="picker">{{heightArray[heightIndex] || '请选择身高状况'}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="label">体重状况</text>
+      <picker range="{{weightArray}}" bindchange="onWeightChange" value="{{weightIndex}}">
+        <view class="picker">{{weightArray[weightIndex] || '请选择体重状况'}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <checkbox-group bindchange="onProtocolChange" value="{{agreeProtocol ? ['agree'] : []}}">
+        <label>
+          <checkbox value="agree" />我已阅读并同意《读者注册协议》
+        </label>
+      </checkbox-group>
+      <navigator url="/pages/registerAgreement/registerAgreement" class="rules">查看协议</navigator>
+    </view>
+    <button class="submit-btn" form-type="submit" style="position: relative; left: 0rpx; top: 1rpx">{{isEditMode ? '保存修改' : '提交注册'}}</button>
+    <button class="back-btn" type="default" bindtap="onBackHome">返回首页</button>
+  </form>
+</view>

@@ -1,0 +1,73 @@
+<view class="container">
+  <image src="../../images/background.png" mode="aspectFill" class="backgroundImage"></image>
+  <block wx:if="{{hasRegistered}}">
+    <view class="profile-header">
+      <image class="profile-avatar" src="{{userInfo.avatarUrl || 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'}}" mode="aspectFill"></image>
+      <block class="profile-info">
+        <view class="profile-name"><text>{{userInfo.nickname || '未设置昵称'}}</text></view>
+        <view class="profile-grade"><text>{{userInfo.selectedGrade || '未设置年级'}}</text></view>
+        <view class="profile-no"><text>编号：{{userInfo.readerNo || '未分配'}}</text></view>
+        <view class="profile-reward"><text>红五星：{{userInfo.rewards ? userInfo.rewards.redStar : 0}} 个</text></view>
+      </block>
+    </view>
+    <view class="profile-card">
+      <view class="card-section">
+        <view class="section-header">
+          <text class="section-title">基本信息</text>
+        </view>
+        <view class="section-content">
+          <view class="info-item"><text class="item-label">出生年月</text><text class="item-value">{{userInfo.birthDate || '未设置'}}</text></view>
+          <view class="info-item"><text class="item-label">所在省市</text><text class="item-value">{{userInfo.regionText || '未设置'}}</text></view>
+          <view class="info-item"><text class="item-label">年级</text><text class="item-value">{{userInfo.selectedGrade || '未设置'}}</text></view>
+          <view class="info-item"><text class="item-label">性格特征</text><text class="item-value">{{userInfo.character || '未设置'}}</text></view>
+          <view class="info-item"><text class="item-label">身高状况</text><text class="item-value">{{userInfo.height || '未设置'}}</text></view>
+          <view class="info-item"><text class="item-label">体重状况</text><text class="item-value">{{userInfo.weight || '未设置'}}</text></view>
+        </view>
+      </view>
+      <view class="card-section">
+        <view class="section-header">
+          <text class="section-title">健康关注</text>
+        </view>
+        <view class="section-content">
+          <view class="tag-list" wx:if="{{userInfo.selectedHealthIssues.length > 0}}">
+            <text class="tag" wx:for="{{userInfo.selectedHealthIssues}}" wx:key="*this">{{item}}</text>
+          </view>
+          <text class="empty-text" wx:else>暂无关注的健康问题</text>
+        </view>
+      </view>
+      <view class="card-section">
+        <view class="section-header">
+          <text class="section-title">兴趣爱好</text>
+        </view>
+        <view class="section-content">
+          <view class="tag-list" wx:if="{{userInfo.selectedHobbies.length > 0}}">
+            <text class="tag" wx:for="{{userInfo.selectedHobbies}}" wx:key="*this">{{item}}</text>
+          </view>
+          <text class="empty-text" wx:else>暂无设置的兴趣爱好</text>
+        </view>
+      </view>
+      <view class="card-section">
+        <view class="section-header">
+          <text class="section-title">家庭成员</text>
+        </view>
+        <view class="section-content">
+          <view class="tag-list" wx:if="{{userInfo.selectedFamilyMembers.length > 0}}">
+            <text class="tag" wx:for="{{userInfo.selectedFamilyMembers}}" wx:key="*this">{{item}}</text>
+          </view>
+          <text class="empty-text" wx:else>暂无设置的家庭成员</text>
+        </view>
+      </view>
+    </view>
+    <button class="edit-btn" type="primary" bindtap="onEdit">编辑个人资料</button>
+    <button class="back-btn" type="warn" bindtap="onLogout">退出登录</button>
+  </block>
+
+  <block wx:else>
+    <view class="not-registered">
+      <text class="not-registered-tip">您还没有登录</text>
+      <button class="register-btn" type="primary" wx:if="{{!userInfo._openid}}" bindtap="onLogin">登录</button>
+      <button class="register-btn" type="primary" wx:if="{{userInfo._openid && !hasRegistered}}" bindtap="onRegister">立即注册</button>
+    </view>
+  </block>
+
+</view>

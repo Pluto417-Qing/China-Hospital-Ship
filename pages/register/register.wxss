@@ -1,0 +1,52 @@
+body, .container, form {
+  font-size: 40rpx;
+}
+
+.label {
+  font-size: 44rpx;
+}
+
+.input, .picker {
+  font-size: 38rpx;
+}
+
+.checkbox-group label {
+  font-size: 38rpx;
+}
+
+.submit-btn, .back-btn {
+  font-size: 44rpx;
+}
+
+.rules {
+  color: green;
+  font-size: 36rpx;
+}
+
+.not-registered-tip {
+  font-size: 40rpx;
+}
+
+@media screen and (max-width: 350px) {
+  body, .container, form {
+    font-size: 28rpx;
+  }
+  .label {
+    font-size: 32rpx;
+  }
+  .input, .picker {
+    font-size: 26rpx;
+  }
+  .checkbox-group label {
+    font-size: 26rpx;
+  }
+  .submit-btn, .back-btn {
+    font-size: 32rpx;
+  }
+  .not-registered-tip {
+    font-size: 28rpx;
+  }
+  .rules {
+    font-size: 24rpx;
+  }
+}

@@ -1,0 +1,61 @@
+<view class="container">
+  <!-- Banner Swiper -->
+  <swiper class="banner-swiper" indicator-dots="true" autoplay="true" interval="5000" circular="true">
+    <swiper-item wx:for="{{banners}}" wx:key="id">
+      <image class="banner-image" src="{{item.image}}" mode="aspectFill"></image>
+      <!-- <view class="banner-title">{{item.title}}</view> -->
+    </swiper-item>
+  </swiper>
+
+  <!-- Offline Activities -->
+  <view class="activities" wx:if="{{hasOffLineActivity && offlineActivityText}}">{{offlineActivityText.title}}</view>
+  <view class="activities" wx:else>线下活动小通知----近期暂无线下活动</view>
+
+
+  <!-- Health Topic Categories -->
+  <view class="category-container">
+    <view class="category-item">
+      <view class="category-icon">
+        <image src="/images/nutrition-icon.png"></image>
+      </view>
+      <text class="category-name">营养健康</text>
+    </view>
+    <view class="category-item">
+      <view class="category-icon">
+        <image src="/images/growth-icon.png"></image>
+      </view>
+      <text class="category-name">身心发展</text>
+    </view>
+    <view class="category-item">
+      <view class="category-icon">
+        <image src="/images/safety-icon.png"></image>
+      </view>
+      <text class="category-name">安全常识</text>
+    </view>
+    <view class="category-item">
+      <view class="category-icon">
+        <image src="/images/disease-icon.png"></image>
+      </view>
+      <text class="category-name">疾病防护</text>
+    </view>
+  </view>
+  
+  <!-- Articles -->
+  <view class="article-section">
+    <view class="section-header">
+      <text class="section-title">健康科普</text>
+      <text class="section-more">更多</text>
+    </view>
+    
+    <view class="article-list">
+      <view class="article-item" wx:for="{{articles}}" wx:key="id" bindtap="onArticleTap" data-id="{{item.id}}">
+        <image class="article-image" src="{{item.image || '/images/default-article.png'}}" mode="aspectFill"></image>
+        <view class="article-content">
+          <text class="article-title">{{item.title}}</text>
+          <text class="article-summary">{{item.summary}}</text>
+          <text class="article-date">{{item.date}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 
