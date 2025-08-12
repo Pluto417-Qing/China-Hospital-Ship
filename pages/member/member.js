@@ -7,13 +7,16 @@ Page({
     },
     hasRegistered: true
   },
+
   onLoad: function (options) {
     this.getUserInfoFromCloud();
   },
+
   onShow: function() {
     // 每次页面显示时都重新加载用户信息
     this.getUserInfoFromCloud();
   },
+
   getUserInfoFromCloud: function() {
     wx.showLoading({
       title: '加载中',
@@ -25,15 +28,17 @@ Page({
         action: 'getUserInfo'
       },
       success: res => {
+        const app = getApp()
+
         console.log('获取用户信息结果:', res.result);
         if (res.result.success && res.result.data) {
           const userInfo = res.result.data;
-          
+
           // 确保所有新字段存在
           userInfo.selectedHealthIssues = Array.isArray(userInfo.selectedHealthIssues) ? userInfo.selectedHealthIssues : [];
           userInfo.selectedHobbies = Array.isArray(userInfo.selectedHobbies) ? userInfo.selectedHobbies : [];
           userInfo.selectedFamilyMembers = Array.isArray(userInfo.selectedFamilyMembers) ? userInfo.selectedFamilyMembers : [];
-          userInfo.rewards = userInfo.rewards || { redStar: 0 };
+          userInfo.rewards = userInfo.rewards || 0;
           userInfo.nickname = userInfo.nickname || '';
           userInfo.birthDate = userInfo.birthDate || '';
           userInfo.regionText = userInfo.regionText || '';
@@ -44,6 +49,7 @@ Page({
           
           console.log('处理后的用户信息:', userInfo);
           
+          app.globalData.userInfo = userInfo
           // 更新页面数据和本地缓存
           this.setData({ userInfo, hasRegistered: true });
           wx.setStorageSync('userInfo', userInfo);
@@ -56,9 +62,13 @@ Page({
         }
       },
       fail: err => {
-        console.error('获取用户信息失败', err);
+        console.error('完整错误信息:', {
+          errCode: err.errCode,
+          errMsg: err.errMsg,
+          errDetail: err
+        });
         wx.showToast({
-          title: '网络错误，请重试',
+          title: `网络错误: ${err || '未知错误'}`,
           icon: 'none'
         });
       },
@@ -74,9 +84,11 @@ Page({
       url: '/pages/register/register?edit=true',
     })
   },
+
   onRegister: function() {
     wx.navigateTo({ url: '/pages/register/register' });
   },
+
   onLogin: function() {
     // 重新获取用户信息，模拟登录
     const that = this;
@@ -109,6 +121,7 @@ Page({
       }
     });
   },
+
   onLogout: function() {
     const that = this;
     wx.showModal({

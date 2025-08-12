@@ -40,19 +40,7 @@
     </view>
   </view>
 
-    <!-- 评价 -->
-    <view class="comments">
-      <view class="singleCom">
-      <image src="cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/icons/comment/good.png"></image>
-      <text>非常好</text>
-      </view>
-      <view class="singleCom">
-        <image src="cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/icons/comment/justsoso.png"></image>
-        <text>一般般</text>
-      </view>
-      <view class="singleCom">
-        <image src="cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/icons/comment/bad.png"></image>
-        <text>不喜欢</text>
-      </view>
-    </view>
+  <!-- 评价 -->
+  <comment class="comment">
+  </comment>
 </view>

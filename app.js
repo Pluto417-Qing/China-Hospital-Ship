@@ -1,4 +1,10 @@
 App({
+  globalData: {
+    articles: [],
+    openid: null, // 用户openid
+    userInfo: {}
+  },
+
   onLaunch: function () {
     // 初始化云开发
     if (!wx.cloud) {
@@ -11,18 +17,12 @@ App({
         // 如不填则使用默认环境（第一个创建的环境）
         env: 'cloudbase-1g4b1jysc952b1f5', // 替换为你的环境ID
         traceUser: true,
+        success: () => {
+          // 获取用户的openid
+          this.getOpenid();
+        }
       })
-      wx.loadFontFace({
-        family: 'ZCOOL',
-        global: true,
-        source: 'url(/fonts/zcoolkuaile-regular-webfont.woff)',
-        success: console.log,
-        fail: console.error
-      });
     }
-    
-    // 获取用户的openid
-    this.getOpenid();
   },
   
   getOpenid: function() {
@@ -41,9 +41,5 @@ App({
         console.error('获取openid失败', err)
       }
     })
-  },
-  
-  globalData: {
-    openid: null // 用户openid
   }
 })

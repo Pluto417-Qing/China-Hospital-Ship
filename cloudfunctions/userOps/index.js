@@ -1,19 +1,19 @@
-// 云函数入口文件
-import { init, DYNAMIC_CURRENT_ENV, database, getWXContext } from 'wx-server-sdk'
+// index.js 云函数入口文件（CommonJS）
+const cloud = require('wx-server-sdk')
 
-init({
-  env: DYNAMIC_CURRENT_ENV
+cloud.init({
+  env: cloud.DYNAMIC_CURRENT_ENV
 })
 
-const db = database()
+const db = cloud.database()
 const _ = db.command
-const userCollection = 'users' // 用户集合名
+const userCollection = 'users'
 
 // 云函数入口函数
-export async function main(event, context) {
-  const wxContext = getWXContext()
+exports.main = async (event, context) => {
+  const wxContext = cloud.getWXContext()
   const openid = wxContext.OPENID
-  
+
   switch (event.action) {
     case 'getUserInfo':
       return getUserInfo(openid)
@@ -25,11 +25,42 @@ export async function main(event, context) {
       return logoutUser(openid)
     case 'setUserStatus':
       return setUserStatus(event.openid, event.status)
+    case 'updateRewards':
+      return updateRewards(openid, event.increment)
     default:
       return {
         success: false,
         message: '未知操作'
       }
+  }
+}
+
+// 更新奖励函数
+async function updateRewards(openid, increment = 1) {
+  try {
+    const result = await db.collection(userCollection).where({ 
+      _openid: openid 
+    }).update({
+      data: {
+        rewards: _.inc(increment), // 使用inc操作符原子增加
+        updateTime: db.serverDate()
+      }
+    });
+    
+    if (result.stats.updated === 0) {
+      return { success: false, message: '用户不存在' };
+    }
+    
+    // 返回更新后的数据
+    const userRes = await db.collection(userCollection).where({ _openid: openid }).get();
+    return {
+      success: true,
+      rewards: userRes.data[0].rewards,
+      user: userRes.data[0]
+    };
+  } catch (err) {
+    console.error('更新奖励失败:', err);
+    return { success: false, message: '更新奖励失败' };
   }
 }
 
@@ -68,6 +99,7 @@ async function saveUserInfo(openid, userInfo) {
     const userRes = await db.collection(userCollection).where({
       _openid: openid
     }).get()
+
     let readerNo = '';
     if (userRes.data.length > 0) {
       // 用户存在，保留原编号
@@ -95,10 +127,10 @@ async function saveUserInfo(openid, userInfo) {
       }
       readerNo = prefix + nextNo;
     }
-    // 日志调试
-    console.log('生成编号:', readerNo, 'regionText:', userInfo.regionText);
+
     // 奖励统计字段
-    const rewards = userRes.data.length > 0 ? (userRes.data[0].rewards || { redStar: 0 }) : { redStar: 0 };
+    const rewards = typeof userInfo.rewards === 'number' ? userInfo.rewards : 
+                   (userRes.data.length > 0 ? (userRes.data[0].rewards || 0) : 0);
     // 移除userInfo中的readerNo，防止覆盖
     if ('readerNo' in userInfo) delete userInfo.readerNo;
     let result;

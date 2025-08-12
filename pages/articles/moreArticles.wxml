@@ -5,13 +5,11 @@
     </view>
     
     <view class="article-list">
-      <view class="article-item" wx:for="{{articles}}" wx:key="id" bindtap="onArticleTap" data-id="{{item.id}}">
-        <image class="article-image" src="{{item.image}}" mode="aspectFill"></image>
-        <view class="article-content">
-          <text class="article-title">{{item.title}}</text>
-          <!-- <text class="article-summary">{{item.summary}}</text> -->
-          <text class="article-date">{{item.date}}</text>
-        </view>
-      </view>
+      <article 
+        wx:for="{{articles.length > 2 ? articles.slice(0,2) : articles}}" 
+        wx:key="id" 
+        article="{{item}}"
+        bind:itemtap="onArticleTap"
+      ></article>
     </view>
 </view>

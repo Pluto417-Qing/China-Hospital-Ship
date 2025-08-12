@@ -1,6 +1,7 @@
 Page({
     data: {
       articles: [],
+      filteredArticles: [],
       hasOffLineActivity: false,
       offlineActivityText: {},
       banners: [
@@ -29,11 +30,36 @@ Page({
       this.getOfflineActivity(); 
     },
 
+    // 获取文章
+    getArticles: function() {
+      wx.showLoading({ title: '加载中...' });
+      
+      wx.cloud.database().collection('articles')
+        .orderBy('date', 'desc')
+        .get()
+        .then(res => {
+          const app = getApp();
+          this.setData({ 
+            articles: res.data,
+            filteredArticles: res.data.filter(article => article.type == this.data.chosenArticleSection),
+            loading: false
+          });
+          app.globalData.articles = res.data;
+          wx.hideLoading();
+        })
+        .catch(err => {
+          console.error('获取文章失败:', err);
+          wx.hideLoading();
+          wx.showToast({ title: '加载失败', icon: 'none' });
+        });
+    },
+
     // 修改展示的section
     changeSection: function(e) {
       const selectedType = e.currentTarget.dataset.type;
       this.setData({
-        chosenArticleSection: selectedType
+        chosenArticleSection: selectedType,
+        filteredArticles: this.data.articles.filter(article => article.type == selectedType)
       });
       
       this.getArticles(selectedType);
@@ -94,40 +120,10 @@ Page({
           });
         });
     },
-
-    // 获取文章列表
-    getArticles: function(type) {
-      wx.showLoading({
-        title: '加载中...',
-      });
-      
-      const db = wx.cloud.database();
-      db.collection('articles')
-        .where({
-          type: type || "中国医院船" 
-        })
-        .orderBy('date', 'desc')
-        .get()
-        .then(res => {
-          this.setData({
-            articles: res.data,  
-            loading: false
-          });
-          wx.hideLoading();
-        })
-        .catch(err => {
-          console.error('获取文章失败:', err);
-          wx.hideLoading();
-          wx.showToast({
-            title: '加载失败',
-            icon: 'none'
-          });
-        });
-    },
     
     // 点击文章
     onArticleTap: function(e) {
-      const id = e.currentTarget.dataset.id;
+      const id = e.detail.id;
       const article = this.data.articles.find(item => item.id === id);
       
       wx.showLoading({ title: '加载中...', mask: true });

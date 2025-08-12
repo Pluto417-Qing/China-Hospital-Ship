@@ -144,9 +144,13 @@ Page({
         }
       },
       fail: err => {
-        console.error('获取用户信息失败', err);
+        console.error('完整错误信息:', {
+          errCode: err.errCode,
+          errMsg: err.errMsg,
+          errDetail: err
+        });
         wx.showToast({
-          title: '网络错误，请重试',
+          title: `网络错误，请重试: ${err.errMsg || '未知错误'}`,
           icon: 'none'
         });
       },
@@ -162,7 +166,7 @@ Page({
       console.log('页面显示 - 确认数据:', this.data);
     }
   },
-  // 选择头像
+  //选择头像
   chooseAvatar: function() {
     wx.chooseImage({
       count: 1,

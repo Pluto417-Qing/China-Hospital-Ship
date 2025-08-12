@@ -110,24 +110,6 @@ slider {
 }
 
 /* 评价 */
-.comments {
+.comment {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-}
-
-.singleCom {
-  width: 33.3%;
-  height: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  margin-top: 5%;
-}
-
-.singleCom image {
-  width: 50%;
-  height: 50px;
-  margin-left: auto;
-  margin-right: auto;
 }
