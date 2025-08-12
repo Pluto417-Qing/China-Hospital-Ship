@@ -1,14 +1,16 @@
 <view class="container">
-  <image src="../../images/background.png" mode="aspectFill" class="backgroundImage"></image>
+  <!-- <image src="../../images/background.png" mode="aspectFill" class="backgroundImage"></image> -->
   <block wx:if="{{hasRegistered}}">
     <view class="profile-header">
-      <image class="profile-avatar" src="{{userInfo.avatarUrl || 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'}}" mode="aspectFill"></image>
-      <block class="profile-info">
-        <view class="profile-name"><text>{{userInfo.nickname || '未设置昵称'}}</text></view>
+      <!-- <view class="profile-avatar"><image src="{{userInfo.avatarUrl || 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'}}" mode="aspectFill"></image></view> -->
+      <!-- <block class="profile-info"> -->
+      <view class="profile-name"><text>{{userInfo.nickname || '未设置昵称'}}</text></view>
+      <view class="profile-detail">
         <view class="profile-grade"><text>{{userInfo.selectedGrade || '未设置年级'}}</text></view>
         <view class="profile-no"><text>编号：{{userInfo.readerNo || '未分配'}}</text></view>
         <view class="profile-reward"><text>红五星：{{userInfo.rewards ? userInfo.rewards.redStar : 0}} 个</text></view>
-      </block>
+      </view>
+      <!-- </block> -->
     </view>
     <view class="profile-card">
       <view class="card-section">
@@ -58,8 +60,10 @@
         </view>
       </view>
     </view>
-    <button class="edit-btn" type="primary" bindtap="onEdit">编辑个人资料</button>
-    <button class="back-btn" type="warn" bindtap="onLogout">退出登录</button>
+    <view class="buttons">
+      <button class="edit-btn" bindtap="onEdit">编辑资料</button>
+      <button class="back-btn" bindtap="onLogout">退出登录</button>
+    </view>
   </block>
 
   <block wx:else>
@@ -69,5 +73,4 @@
       <button class="register-btn" type="primary" wx:if="{{userInfo._openid && !hasRegistered}}" bindtap="onRegister">立即注册</button>
     </view>
   </block>
-
 </view>

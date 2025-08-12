@@ -1,4 +1,11 @@
 <view class="container">
+  <!-- Calligrahy -->
+  <image class="calligraphy" src="../../images/calligraphy.png"></image>
+
+  <!-- Offline Activities -->
+  <view class="activities" wx:if="{{hasOffLineActivity && offlineActivityText}}" bind:tap="showActivityDetail">线下活动小通知----{{offlineActivityText.title}}</view>
+  <view class="activities" wx:else>线下活动小通知----近期暂无线下活动</view>
+
   <!-- Banner Swiper -->
   <swiper class="banner-swiper" indicator-dots="true" autoplay="true" interval="5000" circular="true">
     <swiper-item wx:for="{{banners}}" wx:key="id">
@@ -7,52 +14,38 @@
     </swiper-item>
   </swiper>
 
-  <!-- Offline Activities -->
-  <view class="activities" wx:if="{{hasOffLineActivity && offlineActivityText}}">{{offlineActivityText.title}}</view>
-  <view class="activities" wx:else>线下活动小通知----近期暂无线下活动</view>
-
-
   <!-- Health Topic Categories -->
   <view class="category-container">
-    <view class="category-item">
-      <view class="category-icon">
-        <image src="/images/nutrition-icon.png"></image>
-      </view>
-      <text class="category-name">营养健康</text>
+    <view class="category-item" bind:tap="changeSection" data-type="中国医院船">
+      <text class="category-name" style="color: #6BB392;">中国医院船</text>
     </view>
-    <view class="category-item">
-      <view class="category-icon">
-        <image src="/images/growth-icon.png"></image>
-      </view>
-      <text class="category-name">身心发展</text>
+    <view class="category-item" bind:tap="changeSection" data-type="早晨小运动">
+      <text class="category-name" style="color: #D81918;">早晨小运动</text>
     </view>
-    <view class="category-item">
-      <view class="category-icon">
-        <image src="/images/safety-icon.png"></image>
-      </view>
-      <text class="category-name">安全常识</text>
+    <view class="category-item" bind:tap="changeSection" data-type="医生小提示">
+      <text class="category-name" style="color: #3C7699;">医生小提示</text>
     </view>
-    <view class="category-item">
-      <view class="category-icon">
-        <image src="/images/disease-icon.png"></image>
-      </view>
-      <text class="category-name">疾病防护</text>
+    <view class="category-item" bind:tap="changeSection" data-type="野外小贴士">
+      <text class="category-name" style="color: #EE781F;">野外小贴士</text>
+    </view>
+    <view class="category-item" bind:tap="changeSection" data-type="生活小经验">
+      <text class="category-name" style="color: #49214A;">生活小经验</text>
     </view>
   </view>
   
   <!-- Articles -->
   <view class="article-section">
     <view class="section-header">
-      <text class="section-title">健康科普</text>
-      <text class="section-more">更多</text>
+      <text class="section-title">{{chosenArticleSection}}</text>
+      <text class="section-more" bind:tap="seeMoreArticles">更多</text>
     </view>
     
     <view class="article-list">
-      <view class="article-item" wx:for="{{articles}}" wx:key="id" bindtap="onArticleTap" data-id="{{item.id}}">
-        <image class="article-image" src="{{item.image || '/images/default-article.png'}}" mode="aspectFill"></image>
+      <view class="article-item" wx:for="{{articles.length > 2 ? articles.slice(0,2) : articles}}" wx:key="id" bindtap="onArticleTap" data-id="{{item.id}}">
+        <image class="article-image" src="{{item.image}}" mode="aspectFill"></image>
         <view class="article-content">
           <text class="article-title">{{item.title}}</text>
-          <text class="article-summary">{{item.summary}}</text>
+          <!-- <text class="article-summary">{{item.summary}}</text> -->
           <text class="article-date">{{item.date}}</text>
         </view>
       </view>

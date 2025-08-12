@@ -4,12 +4,16 @@
     "pages/auth/auth",
     "pages/register/register",
     "pages/member/member",
-    "pages/registerAgreement/registerAgreement"
+    "pages/registerAgreement/registerAgreement",
+    "pages/articles/moreArticles",
+    "pages/chinaShipArticle/chinaShipArticle",
+    "pages/morningExercise/morningExercise",
+    "pages/doctorTips/doctorTips"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "读者中心",
+    "navigationBarTitleText": "中国医院船",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -21,18 +25,19 @@
       {
         "pagePath": "pages/home/home",
         "text": "首页",
-        "iconPath": "/images/home.png",
-        "selectedIconPath": "/images/home-active.png"
+        "iconPath": "/images/icons/home.png",
+        "selectedIconPath": "/images/icons/home-active.png"
       },
       {
         "pagePath": "pages/member/member",
-        "text": "会员中心",
-        "iconPath": "/images/member.png",
-        "selectedIconPath": "/images/member-active.png"
+        "text": "读者中心",
+        "iconPath": "/images/icons/my.png",
+        "selectedIconPath": "/images/icons/my-active.png"
       }
     ]
   },
   "renderer": "webview",
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
 }

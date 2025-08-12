@@ -11,12 +11,6 @@ page {
 }
 
 @font-face {
-  font-family: 'happy';
-  src: url('/fonts/happy.ttf');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Alibaba';
-  src: url('/fonts/AlibabaPuHuiTi-Light.ttf');
+  font-family: "ZCOOL";
+  src: url("/fonts/zcoolkuaile-regular-webfont.woff"); 
 }

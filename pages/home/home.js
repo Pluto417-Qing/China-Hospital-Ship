@@ -1,40 +1,81 @@
 Page({
     data: {
       articles: [],
-      hasOffLineActivity: true,
+      hasOffLineActivity: false,
       offlineActivityText: {},
       banners: [
         {
           id: 1,
-          image: '/images/swiper_images/banner1.png',
+          image: 'cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/banners/banner1.png',
           title: ''
         },
         {
           id: 2,
-          image: '/images/swiper_images/banner2.png',
+          image: 'cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/banners/banner2.png',
           title: ''
         },
         {
           id: 3,
-          image: '/images/swiper_images/banner3.png',
+          image: 'cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/banners/banner3.png',
           title: ''
         }
       ],
-      loading: true
+      loading: true,
+      chosenArticleSection: "中国医院船"
     },
     
     onLoad: function() {
       this.getArticles();
-      // this.getOfflineActivity(); 
+      this.getOfflineActivity(); 
+    },
+
+    // 修改展示的section
+    changeSection: function(e) {
+      const selectedType = e.currentTarget.dataset.type;
+      this.setData({
+        chosenArticleSection: selectedType
+      });
+      
+      this.getArticles(selectedType);
+    },
+
+    // 弹窗，显示线下活动具体信息
+    showActivityDetail: function() {
+      wx.showModal({
+        title: this.data.offlineActivityText.title,
+        content: this.getActivityDesc(),
+        showCancel: false, 
+        confirmText: '关闭', 
+        // success(res) {
+        //   if (res.confirm) {
+        //     console.log('用户点击了确定')
+        //   }
+        // }
+      })
     },
     
+    // 获取线下活动信息具体描述
+    getActivityDesc: function() {
+      const { 
+        startTime, 
+        endTime, 
+        location, 
+        description 
+      } = this.data.offlineActivityText;
+      
+      return `
+        时间：${startTime} 至 ${endTime} 
+        地点：${location}
+        详情：${description}
+      `;
+    },
+
     // 获取线下活动信息
     getOfflineActivity: function() {
       wx.cloud.database().collection('activities')
         .where({ isActive: true })
         .get()
         .then(res => {
-          console.log(res.data)
           if (res.data.length > 0) {
             this.setData({
               offlineActivityText: res.data[0],
@@ -55,31 +96,21 @@ Page({
     },
 
     // 获取文章列表
-    getArticles: function() {
+    getArticles: function(type) {
       wx.showLoading({
         title: '加载中...',
       });
       
       const db = wx.cloud.database();
       db.collection('articles')
+        .where({
+          type: type || "中国医院船" 
+        })
         .orderBy('date', 'desc')
         .get()
         .then(res => {
-          // 获取临时URL用于封面图显示
-          const articles = res.data;
-          const tasks = articles.map(async article => {
-            const tempRes = await wx.cloud.getTempFileURL({
-                  fileList: [article.coverImage]
-              });
-              article.coverImageUrl = tempRes.fileList[0].tempFileURL;
-              return article;
-          });
-          
-          return Promise.all(tasks);
-        })
-        .then(articlesWithUrls => {
           this.setData({
-            articles: articlesWithUrls,
+            articles: res.data,  
             loading: false
           });
           wx.hideLoading();
@@ -94,88 +125,55 @@ Page({
         });
     },
     
-    // // 获取轮播图
-    // getBanners: function() {
-    //   const db = wx.cloud.database();
-    //   db.collection('banners')
-    //     .get()
-    //     .then(res => {
-    //       // 获取轮播图的临时URL
-    //       const banners = res.data;
-    //       const tasks = banners.map(async banner => {
-    //         const tempRes = await wx.cloud.getTempFileURL({
-    //               fileList: [banner.image]
-    //           });
-    //           banner.imageUrl = tempRes.fileList[0].tempFileURL;
-    //           return banner;
-    //       });
-          
-    //       return Promise.all(tasks);
-    //     })
-    //     .then(bannersWithUrls => {
-    //       this.setData({
-    //         banners: bannersWithUrls
-    //       });
-    //     })
-    //     .catch(err => {
-    //       console.error('获取轮播图失败:', err);
-    //     });
-    // },
-    
     // 点击文章
     onArticleTap: function(e) {
       const id = e.currentTarget.dataset.id;
-      const article = this.data.articles.find(item => item._id === id);
+      const article = this.data.articles.find(item => item.id === id);
       
-      // 先下载Word内容和音频文件
-      wx.showLoading({ title: '加载内容...' });
+      wx.showLoading({ title: '加载中...', mask: true });
       
-      Promise.all([
-        wx.cloud.downloadFile({ fileID: article.contentFile }),
-        wx.cloud.downloadFile({ fileID: article.audioFile })
-      ]).then(res => {
-        const [contentRes, audioRes] = res;
+      // 先获取文件临时URL
+      wx.cloud.getTempFileURL({
+        fileList: [article.audio, article.image].filter(Boolean)
+      }).then(res => {
+        const audioUrl = res.fileList[0]?.tempFileURL || '';
+        const imageUrl = res.fileList[1]?.tempFileURL || '';
         
-        // 读取Word内容
-        const fs = wx.getFileSystemManager();
-        fs.readFile({
-          filePath: contentRes.tempFilePath,
-          encoding: 'utf8',
-          success: textRes => {
-            // 跳转到详情页，传递内容和音频路径
-            wx.navigateTo({
-              url: `/pages/article/detail?id=${id}`,
-              success: function(res) {
-                res.eventChannel.emit('acceptData', {
-                  title: article.title,
-                  content: textRes.data,
-                  audioPath: audioRes.tempFilePath,
-                  date: article.date
-                });
-              }
+        wx.navigateTo({
+          url: `/pages/chinaShipArticle/chinaShipArticle`,
+          success: (res) => {
+            res.eventChannel.emit('acceptData', {
+              title: article.title, 
+              audioUrl: audioUrl,     
+              imageUrl: imageUrl,     
+              date: article.date,
+
+              healthKnowledgeFileID: article.healthKnowledge,
+              peopleIntroFileID: article.peopleIntro,
+              doctorsFileID: article.doctors,
+              storyFileID: article.story
             });
           },
-          fail: err => {
-            console.error('读取Word失败:', err);
-            wx.showToast({ title: '内容加载失败', icon: 'none' });
+          fail: (err) => {
+            console.error('跳转失败:', err);
+            wx.showToast({ title: '跳转失败', icon: 'none' });
           },
           complete: () => wx.hideLoading()
         });
       }).catch(err => {
-        console.error('下载文件失败:', err);
+        console.error('获取文件URL失败:', err);
         wx.hideLoading();
         wx.showToast({ title: '加载失败', icon: 'none' });
       });
     },
     
-    // 点击轮播图
-    onBannerTap: function(e) {
-      const id = e.currentTarget.dataset.id;
+    // 查看更多文章
+    seeMoreArticles: function() {
       wx.navigateTo({
-        url: `/pages/activity/detail?id=${id}`
+        url: `/pages/articles/moreArticles?chosenArticleSection=${this.data.chosenArticleSection}`
       });
     },
-  
+    
     // 会员中心跳转（保持不变）
     goToMemberCenter: function() {
       const wxUserInfo = wx.getStorageSync('wxUserInfo');

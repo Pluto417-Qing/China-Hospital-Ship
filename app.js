@@ -13,8 +13,9 @@ App({
         traceUser: true,
       })
       wx.loadFontFace({
-        family: 'happy',
-        source: 'url("/fonts/happy.ttf")',
+        family: 'ZCOOL',
+        global: true,
+        source: 'url(/fonts/zcoolkuaile-regular-webfont.woff)',
         success: console.log,
         fail: console.error
       });

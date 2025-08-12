@@ -1,52 +1,55 @@
-body, .container, form {
-  font-size: 40rpx;
+.container {
+  width: 100%;
+  padding: 5%;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5%;
 }
 
 .label {
-  font-size: 44rpx;
+  width: 30%;
+  min-width: 30%;
+  font-size: large;
+  margin-right: 10%;
+  color: rgb(5, 151, 151);
+  text-align: center;
 }
 
-.input, .picker {
-  font-size: 38rpx;
+.input {
+  background-color: rgba(241, 240, 240, 0.5);
+  border-radius: 10px;
+  width: 100%;
+  min-height: 30px;
+  padding: 2%;
 }
 
-.checkbox-group label {
-  font-size: 38rpx;
-}
-
-.submit-btn, .back-btn {
-  font-size: 44rpx;
+/* 协议部分样式 */
+.rules-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .rules {
-  color: green;
-  font-size: 36rpx;
+  margin-top: 2%;
+  color: rgb(4, 83, 230);
 }
 
-.not-registered-tip {
-  font-size: 40rpx;
+/* 按钮 */
+.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@media screen and (max-width: 350px) {
-  body, .container, form {
-    font-size: 28rpx;
-  }
-  .label {
-    font-size: 32rpx;
-  }
-  .input, .picker {
-    font-size: 26rpx;
-  }
-  .checkbox-group label {
-    font-size: 26rpx;
-  }
-  .submit-btn, .back-btn {
-    font-size: 32rpx;
-  }
-  .not-registered-tip {
-    font-size: 28rpx;
-  }
-  .rules {
-    font-size: 24rpx;
-  }
+.submit-btn,
+.back-btn {
+  max-width: 120px;
+  background-color: rgba(10, 221, 175, 0.5);
+  color: rgb(255, 255, 255);
 }
