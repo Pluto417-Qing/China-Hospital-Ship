@@ -6,6 +6,7 @@ Page({
     audioUrl: "",
     imageUrl: "",
     date: "",
+    type: "",
 
     healthKnowledgeFileID: "",
     peopleIntroFileID: "",
@@ -33,6 +34,7 @@ Page({
         audioUrl: data.audioUrl,
         imageUrl: data.imageUrl,
         date: data.date,
+        type: data.type,
 
         healthKnowledgeFileID: data.healthKnowledgeFileID,
         peopleIntroFileID: data.peopleIntroFileID,

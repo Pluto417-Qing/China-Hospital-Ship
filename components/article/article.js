@@ -42,6 +42,7 @@ Component({
                 audioUrl: audioUrl,     
                 imageUrl: imageUrl,     
                 date: article.date,
+                type: article.type,
 
                 healthKnowledgeFileID: article.healthKnowledge,
                 peopleIntroFileID: article.peopleIntro,

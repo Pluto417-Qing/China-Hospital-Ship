@@ -31,8 +31,8 @@
       {
         "pagePath": "pages/member/member",
         "text": "读者中心",
-        "iconPath": "/images/icons/my.png",
-        "selectedIconPath": "/images/icons/my-active.png"
+        "iconPath": "/images/icons/home.png",
+        "selectedIconPath": "/images/icons/home-active.png"
       }
     ]
   },

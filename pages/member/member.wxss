@@ -3,81 +3,40 @@
   min-height: 100vh;
   padding: 10rpx;
   box-sizing: border-box;
+  color: white;
 }
 
 .profile-header {
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 20rpx;
-  background: #fff;
+  flex-direction: column;
+  background-color: #C02C38;
   border-radius: 30rpx;
   padding: 30rpx 0;
-  position: relative;
-  width: 100%;
+
   max-width: 700rpx;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
-}
-
-/* .profile-avatar {
-    width: 100%;
-    height: 200rpx;
-    border-radius: 50%;
-    margin-bottom: auto;
-    margin-top: auto;
-    margin-left: 5%;
-    margin-right: 5%;
-
-    max-width: 40vw;
-    max-height: 40vw;
-
-    border: 1px solid red;
-  } */
-
-/* .profile-info {
-    display: flex;
-    flex-direction: column;
-} */
-
-.profile-name {
-  position: relative;
-  width: 30%;
-  text-align: center;
-
-  font-size: 40rpx;
-  font-weight: bold;
-  color: #1976d2;
-
-  margin-bottom: auto;
-  margin-top: auto;
-  margin-left: 10%;
-  margin-right: 1%;
+  margin-bottom: 20rpx;
 }
 /* .profile-name::before {
   content: "👦";
   margin-right: 8rpx;
 } */
 
-.profile-detail {
-  position: relative;
-  width: 70%;
-  text-align: center;
+.profile-words {
+  width: 100%;
+  margin-left: 4%;
+  font-size: 30rpx;
+  line-height: 150%;
+}
 
-  margin-right: 10%;
-  margin-left: 5%;
+.profile-name {
+  margin-bottom: 2%;
 }
 
 .profile-grade {
-  font-size:30rpx;
-  color: #388e3c;
-  margin-bottom: 8rpx;
-}
-
-.profile-no {
-  font-size: 28rpx;
-  color: #ff9800;
   margin-bottom: 8rpx;
 }
 /* .profile-no::before {
@@ -87,18 +46,16 @@
 } */
 
 .profile-reward {
-  font-size: 28rpx;
-  color: #e53935;
   margin-bottom: 8rpx;
   margin-top: 10rpx;
 }
-.profile-reward::before {
+.profile-reward::after {
   content: "⭐";
   margin-right: 8rpx;
 }
 
 .profile-card {
-  background: #fff;
+  background-color: #C02C38;
   border-radius: 24rpx;
   box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04);
   padding: 24rpx;
@@ -122,7 +79,6 @@
 .section-title {
   font-size: 37rpx;
   font-weight: bold;
-  color: #4fc3f7;
   margin-right: 8rpx;
 }
 /* .section-title::before {
@@ -135,7 +91,6 @@
   justify-content: space-between;
   font-size: 32rpx;
   margin-bottom: 6rpx;
-  color: #333;
 }
 
 .tag-list {
@@ -143,10 +98,11 @@
   flex-wrap: wrap;
   gap: 12rpx;
   margin-bottom: 8rpx;
+  margin-top: 5%;
 }
 .tag {
-  background: #ffe082;
-  color: #ff6f00;
+  background: white;
+  color: #C02C38;
   border-radius: 20rpx;
   padding: 8rpx 18rpx;
   font-size: 32rpx;
@@ -176,7 +132,7 @@
 
   margin: 10px;
   
-  background-color: orange;
+  background-color: #C02C38;
   color: #fff;
   font-size: 35rpx;
   border-radius: 40rpx;
@@ -196,5 +152,8 @@
 }
 .not-registered-tip {
   font-size: 50rpx;
-  color: rgb(235, 128, 128);
+  color: #6BB392;
+}
+.register-btn {
+  margin-top: 30px;
 }

@@ -1,26 +1,16 @@
 Page({
     data: {
       articles: [],
-      filteredArticles: [],
+
+      selectedArticles: [],
+      filteredHealthArticles: [],
+      filteredNutritionArticles: [],
+      filteredSportArticles: [],
+      filteredEmotionArticles: [],
+      filteredSafetyArticles: [],
+
       hasOffLineActivity: false,
       offlineActivityText: {},
-      banners: [
-        {
-          id: 1,
-          image: 'cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/banners/banner1.png',
-          title: ''
-        },
-        {
-          id: 2,
-          image: 'cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/banners/banner2.png',
-          title: ''
-        },
-        {
-          id: 3,
-          image: 'cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/banners/banner3.png',
-          title: ''
-        }
-      ],
       loading: true,
       chosenArticleSection: "中国医院船"
     },
@@ -41,7 +31,12 @@ Page({
           const app = getApp();
           this.setData({ 
             articles: res.data,
-            filteredArticles: res.data.filter(article => article.type == this.data.chosenArticleSection),
+            selectedArticles: res.data.filter(article => article.type == this.data.chosenArticleSection),
+            filteredHealthArticles: res.data.filter(article => article.type == "中国医院船"),
+            filteredNutritionArticles: res.data.filter(article => article.type == "营养小当家"),
+            filteredSportArticles: res.data.filter(article => article.type == "健身小体操"),
+            filteredEmotionArticles: res.data.filter(article => article.type == "快乐小花园"),
+            filteredSafetyArticles: res.data.filter(article => article.type == "生活小经验"),
             loading: false
           });
           app.globalData.articles = res.data;
@@ -59,7 +54,7 @@ Page({
       const selectedType = e.currentTarget.dataset.type;
       this.setData({
         chosenArticleSection: selectedType,
-        filteredArticles: this.data.articles.filter(article => article.type == selectedType)
+        selectedArticles: this.data.articles.filter(article => article.type == selectedType),
       });
       
       this.getArticles(selectedType);

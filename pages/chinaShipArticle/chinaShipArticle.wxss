@@ -68,15 +68,16 @@ slider {
   padding: 20px;
 
   border-radius: 10px;
+  line-height: 200%;
 
   background-color: #EBEEF0;
 }
 
 .title {
-  font-size: 25px;
+  font-size: 20px;
   margin-top: 10px;
-  color: red;
-  text-align: center;
+  /* color: red; */
+  text-align: left;
 }
 
 .subTitle {
@@ -86,14 +87,15 @@ slider {
 }
 
 .content-section {
-  font-size: 15px;
+  font-size: 18px;
+  text-align: justify;
 }
 
 .preserve-whitespace {
   white-space: pre-wrap; /* 保留空格和换行 */
 }
 
-.peopleIntro {
+/* .peopleIntro {
   color: rgb(16, 184, 38);
 }
 
@@ -107,7 +109,7 @@ slider {
 
 .doctors {
   color: orangered;
-}
+} */
 
 /* 评价 */
 .comment {

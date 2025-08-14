@@ -1,7 +1,7 @@
 <view class="container">
   <form bindsubmit="onSubmit">
     <view class="form-item">
-      <text class="label">读者昵称</text>
+      <text class="label nickname">读者昵称</text>
       <input class="input" placeholder="请输入昵称（仅限汉字）" bindinput="onNicknameInput" value="{{nickname}}" />
     </view>
     <view class="form-item">
@@ -39,9 +39,11 @@
     <view class="form-item">
       <text class="label">健康问题（可多选）</text>
       <checkbox-group bindchange="onHealthChange" value="{{selectedHealth}}">
-        <label wx:for="{{healthArray}}" wx:key="item">
-          <checkbox value="{{item}}" />{{item}}
-        </label>
+          <view class="checkboxes">
+            <label wx:for="{{healthArray}}" wx:key="item">
+              <checkbox value="{{item}}" />{{item}}
+            </label>
+          </view>
       </checkbox-group>
     </view>
     <view class="form-item">
