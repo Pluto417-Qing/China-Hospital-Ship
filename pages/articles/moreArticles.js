@@ -3,15 +3,25 @@ Page({
     data: {
       chosenArticleSection: "",
       articles: [],
-      loading: false
+      loading: false,
+      bgColor: "white"
     },
 
     onLoad(options) {
       const app = getApp();
+      let newBgColor;
+      switch(options.chosenType) {
+        case '中国医院船': newBgColor = '#6BB392'; break;
+        case '营养小当家': newBgColor = '#C02C38'; break;
+        case '健身小体操': newBgColor = '#3C7699'; break;
+        case '快乐小花园': newBgColor = '#EE781F'; break;
+        case '生活小经验': newBgColor = '#49214A'; break;
+      }
 
       this.setData({
-        chosenArticleSection: options.chosenArticleSection,
-        articles: app.globalData.articles.filter(article => article.type === options.chosenArticleSection)
+        chosenArticleSection: options.chosenType,
+        articles: app.globalData.articles.filter(article => article.type === options.chosenType),
+        bgColor: newBgColor
       })
 
       // this.getArticles(options.chosenArticleSection)

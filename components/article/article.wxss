@@ -49,6 +49,6 @@
 .article-date {
   font-size: 12px;
   color: white;
-  margin-left: 0px;
+  margin-left: -150px;
   opacity: 0.7;
 }

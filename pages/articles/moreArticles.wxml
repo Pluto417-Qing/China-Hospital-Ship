@@ -1,5 +1,5 @@
 <!--pages/articles/moreArticles.wxml-->
-<view class="article-section">
+<view class="article-section" style="background-color: {{bgColor}};">
     <view class="section-header">
       <text class="section-title">{{chosenArticleSection}}</text>
     </view>

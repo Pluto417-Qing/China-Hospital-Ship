@@ -49,7 +49,7 @@
   display: flex;
   justify-content: space-around;
   padding: 15px 0px;
-  background-color: #6BB392;
+  background-color: #ebdfb3;
 }
 
 .category-item {

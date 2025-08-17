@@ -2,43 +2,19 @@
   <!-- Calligrahy -->
   <image class="calligraphy" src="cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/calligraphy.jpg"></image>
 
-  <!-- Offline Activities -->
-  <!-- <view class="activities" wx:if="{{hasOffLineActivity && offlineActivityText}}" bind:tap="showActivityDetail">线下活动小通知----{{offlineActivityText.title}}</view>
-  <view class="activities" wx:else>线下活动小通知----近期暂无线下活动</view> -->
-
   <!-- Banner Swiper -->
-  <!-- <swiper class="banner-swiper" indicator-dots="true" autoplay="true" interval="5000" circular="true">
-    <swiper-item wx:for="{{banners}}" wx:key="id">
-      <image class="banner-image" src="{{item.image}}" mode="aspectFill"></image>
-    </swiper-item>
-  </swiper> -->
   <banners class=".banner-swiper"></banners>
 
-  <!-- Health Topic Categories -->
-  <view class="category-container">
-    <view class="category-item" bind:tap="changeSection" data-type="中国医院船" style="background-color: #6BB392;">
-      <text class="category-name">健康</text>
-    </view>
-    <view class="category-item" bind:tap="changeSection" data-type="早晨小运动" style="background-color: #c02c38;">
-      <text class="category-name">营养</text>
-    </view>
-    <view class="category-item" bind:tap="changeSection" data-type="医生小提示" style="background-color: #3C7699;">
-      <text class="category-name">运动</text>
-    </view>
-    <view class="category-item" bind:tap="changeSection" data-type="野外小贴士" style="background-color: #EE781F;">
-      <text class="category-name">情感</text>
-    </view>
-    <view class="category-item" bind:tap="changeSection" data-type="生活小经验" style="background-color: #49214A;">
-      <text class="category-name">安全</text>
-    </view>
-  </view>
+  <!-- Offline Activities -->
+  <view class="activities" wx:if="{{hasOffLineActivity && offlineActivityText}}" bind:tap="showActivityDetail">线下活动小通知----{{offlineActivityText.title}}</view>
+  <view class="activities" wx:else>线下活动小通知----近期暂无线下活动</view>
   
   <!-- Articles -->
   <!-- 中国医院船 -->
   <view class="article-section" style="background-color: #6BB392">
     <view class="section-header">
       <text class="section-title">中国医院船</text>
-      <text class="section-more" bind:tap="seeMoreArticles">更多</text>
+      <text class="section-more" bind:tap="seeMoreArticles" data-type="中国医院船">更多</text>
     </view>
     <view class="article-list">
       <article 
@@ -49,63 +25,15 @@
       ></article>
     </view>
   </view>
-  <!-- 营养小当家 -->
+  <!-- 少年百事通 -->
   <view class="article-section" style="background-color: #C02C38;">
     <view class="section-header">
-      <text class="section-title">营养小当家</text>
-      <text class="section-more" bind:tap="seeMoreArticles">更多</text>
+      <text class="section-title">少年百事通</text>
+      <text class="section-more" bind:tap="seeMoreArticles" data-type="少年百事通">更多</text>
     </view>
     <view class="article-list">
       <article 
         wx:for="{{filteredNutritionArticles.length > 2 ? filteredNutritionArticles.slice(0,2) : filteredNutritionArticles}}" 
-        wx:key="id" 
-        article="{{item}}"
-        bind:itemtap="onArticleTap"
-      ></article>
-    </view>
-  </view>
-  <!-- 健身小体操 -->
-  <view class="article-section" style="background-color: #3C7699">
-    <view class="section-header">
-      <text class="section-title">健身小体操</text>
-      <text class="section-more" bind:tap="seeMoreArticles">更多</text>
-    </view>
-    
-    <view class="article-list">
-      <article 
-        wx:for="{{filteredSportArticles.length > 2 ? filteredSportArticles.slice(0,2) : filteredSportArticles}}" 
-        wx:key="id" 
-        article="{{item}}"
-        bind:itemtap="onArticleTap"
-      ></article>
-    </view>
-  </view>
-  <!-- 快乐小花园 -->
-  <view class="article-section" style="background-color: #EE781F">
-    <view class="section-header">
-      <text class="section-title">快乐小花园</text>
-      <text class="section-more" bind:tap="seeMoreArticles">更多</text>
-    </view>
-    
-    <view class="article-list">
-      <article 
-        wx:for="{{filteredEmotionArticles.length > 2 ? filteredEmotionArticles.slice(0,2) : filteredEmotionArticles}}" 
-        wx:key="id" 
-        article="{{item}}"
-        bind:itemtap="onArticleTap"
-      ></article>
-    </view>
-  </view>
-  <!-- 生活小经验 -->
-  <view class="article-section" style="background-color: #49214A">
-    <view class="section-header">
-      <text class="section-title">生活小经验</text>
-      <text class="section-more" bind:tap="seeMoreArticles">更多</text>
-    </view>
-    
-    <view class="article-list">
-      <article 
-        wx:for="{{filteredSafetyArticles.length > 2 ? filteredSafetyArticles.slice(0,2) : filteredSafetyArticles}}" 
         wx:key="id" 
         article="{{item}}"
         bind:itemtap="onArticleTap"

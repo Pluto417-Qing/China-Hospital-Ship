@@ -2,7 +2,7 @@
     <!-- 评价 -->
     <view class="comments">
       <view class="yourComs">
-        <text>读者打卡</text>
+        <view><text>读者打卡</text></view>
       </view>
 
       <view class="singleComs">
@@ -10,8 +10,8 @@
         <image src="cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/icons/comment/good.png"></image>
         <text>非常好</text>
         </view>
-        <view class="singleCom" bind:tap="makeComment">
-          <image src="cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/icons/comment/justsoso.png"></image>
+        <view class="singleCom justsoso" bind:tap="makeComment">
+          <image src="cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/icons/comment/justsoso .png"></image>
           <text>一般般</text>
         </view>
         <view class="singleCom" bind:tap="makeComment">
