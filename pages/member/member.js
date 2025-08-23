@@ -1,55 +1,50 @@
 Page({
   data: {
     userInfo: {
-      selectedHealthIssues: [],
-      selectedHobbies: [],
-      selectedFamilyMembers: []
+      nickname: '',
+      birthDate: '',
+      regionText: ''
     },
-    hasRegistered: true
+    hasRegistered: true,
+    readingThoughts: [] // 新增字段，用于存储读后感数据
   },
 
   onLoad: function (options) {
     this.getUserInfoFromCloud();
+    this.getReadingThoughts(); // 加载读后感数据
   },
 
   onShow: function() {
-    // 每次页面显示时都重新加载用户信息
+    // 每次页面显示时都重新加载用户信息和读后感
     this.getUserInfoFromCloud();
+    this.getReadingThoughts();
   },
 
   getUserInfoFromCloud: function() {
     wx.showLoading({
       title: '加载中',
     });
-    
+
     wx.cloud.callFunction({
       name: 'userOps',
       data: {
         action: 'getUserInfo'
       },
       success: res => {
-        const app = getApp()
+        const app = getApp();
 
         console.log('获取用户信息结果:', res.result);
         if (res.result.success && res.result.data) {
           const userInfo = res.result.data;
 
-          // 确保所有新字段存在
-          userInfo.selectedHealthIssues = Array.isArray(userInfo.selectedHealthIssues) ? userInfo.selectedHealthIssues : [];
-          userInfo.selectedHobbies = Array.isArray(userInfo.selectedHobbies) ? userInfo.selectedHobbies : [];
-          userInfo.selectedFamilyMembers = Array.isArray(userInfo.selectedFamilyMembers) ? userInfo.selectedFamilyMembers : [];
-          userInfo.rewards = userInfo.rewards || 0;
+          // 确保字段存在
           userInfo.nickname = userInfo.nickname || '';
           userInfo.birthDate = userInfo.birthDate || '';
           userInfo.regionText = userInfo.regionText || '';
-          userInfo.character = userInfo.character || '';
-          userInfo.height = userInfo.height || '';
-          userInfo.weight = userInfo.weight || '';
-          userInfo.readerNo = userInfo.readerNo || '';
-          
+
           console.log('处理后的用户信息:', userInfo);
-          
-          app.globalData.userInfo = userInfo
+
+          app.globalData.userInfo = userInfo;
           // 更新页面数据和本地缓存
           this.setData({ userInfo, hasRegistered: true });
           wx.setStorageSync('userInfo', userInfo);
@@ -77,12 +72,38 @@ Page({
       }
     });
   },
-  
+
+  getReadingThoughts: function() {
+    wx.cloud.callFunction({
+      name: 'userOps',
+      data: {
+        action: 'getReadingThoughts' // 假设后端有此接口
+      },
+      success: res => {
+        if (res.result.success) {
+          this.setData({ readingThoughts: res.result.data });
+        } else {
+          wx.showToast({
+            title: '加载读后感失败',
+            icon: 'none'
+          });
+        }
+      },
+      fail: err => {
+        console.error('加载读后感失败:', err);
+        wx.showToast({
+          title: '网络错误',
+          icon: 'none'
+        });
+      }
+    });
+  },
+
   onEdit: function() {
     // 导航到注册页面进行资料修改
     wx.navigateTo({
       url: '/pages/register/register?edit=true',
-    })
+    });
   },
 
   onRegister: function() {
@@ -142,4 +163,4 @@ Page({
       }
     });
   }
-})
+});
