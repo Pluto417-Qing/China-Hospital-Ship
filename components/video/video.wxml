@@ -1,0 +1,13 @@
+<!-- 视频卡片式展示 -->
+<view class="video-card" bindtap="onVideoTap">
+  <view class="video-thumb-wrapper">
+    <image class="video-thumb" src="{{video.cover }}" mode="aspectFill"></image>
+    <view class="video-play-icon">▶️</view>
+  </view>
+  <view class="video-info">
+    <view class="video-meta">
+      <text class="video-from">来源：{{video.from || '未知'}}</text>
+      <text class="video-date">{{video.date || ''}}</text>
+    </view>
+  </view>
+</view>

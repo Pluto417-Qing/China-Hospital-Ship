@@ -1,0 +1,22 @@
+/* components/banners/banners.wxss */
+/* Banner 样式 */
+.banner-swiper {
+  height: 500rpx;
+  width: 100%;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  padding: 8px 16px;
+  font-size: 16px;
+}

@@ -1,0 +1,14 @@
+<!--pages/videos/videos.wxml-->
+<view class="section-header">
+  <text class="section-title">我的地球村</text>
+</view>
+<view class="videos-section">
+  <view class="video-list">
+      <video 
+        wx:for="{{videos}}" 
+        wx:key="id" 
+        video="{{item}}"
+        bind:videotap="onVideoTap"
+      ></video>
+    </view>
+</view>

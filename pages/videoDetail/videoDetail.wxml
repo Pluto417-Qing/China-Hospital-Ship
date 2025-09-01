@@ -1,0 +1,24 @@
+<!--pages/videoDetail/videoDetail.wxml-->
+<!-- <view class="back-btn" bindtap="close">← 返回</view> -->
+<view class="video-container" catchtouchmove="stopScroll">
+  <view class="video-content">
+    <video
+      class="video-player"
+      src="{{video.url}}"
+      poster="{{video.cover}}"
+      controls
+      autoplay
+      enable-play-gesture
+      direction="90"
+      object-fit="contain"
+      initial-time="0"
+      show-fullscreen-btn="true"
+      show-center-play-btn="true"
+    ></video>
+    <view class="video-meta">
+      <text>来源：{{video.from}}</text>
+      <text>{{video.date}}</text>
+    </view>
+  </view>
+  <comment id="comment"></comment>
+</view>

@@ -1,0 +1,43 @@
+<view class="agreement-container">
+  <view class="agreement-header">
+    <text class="agreement-title">读者注册协议</text>
+  </view>
+  <scroll-view class="agreement-content" scroll-y="true">
+    <view class="agreement-section">
+      <text class="section-title">一、总则</text>
+      <text class="section-text">
+        欢迎您注册成为本平台读者。在注册前请您仔细阅读本协议，注册即视为同意本协议全部内容。
+      </text>
+    </view>
+    <view class="agreement-section">
+      <text class="section-title">二、用户信息保护</text>
+      <text class="section-text">
+        1. 您的个人信息仅用于平台服务，不会泄露给第三方。\n
+        2. 您有权随时查询、更正和删除您的个人信息。
+      </text>
+    </view>
+    <view class="agreement-section">
+      <text class="section-title">三、用户行为规范</text>
+      <text class="section-text">
+        1. 遵守国家法律法规，不发布违法、违规内容。\n
+        2. 尊重他人，文明交流，不得恶意攻击、骚扰他人。
+      </text>
+    </view>
+    <view class="agreement-section">
+      <text class="section-title">四、服务说明</text>
+      <text class="section-text">
+        1. 平台有权根据运营需要对服务内容进行调整。\n
+        2. 如发现违规行为，平台有权暂停或终止您的使用资格。
+      </text>
+    </view>
+    <view class="agreement-section">
+      <text class="section-title">五、其他</text>
+      <text class="section-text">
+        本协议最终解释权归平台所有。如有疑问请联系客服。
+      </text>
+    </view>
+  </scroll-view>
+  <view class="agreement-footer">
+    <button class="agree-btn" bindtap="onAgree">我已阅读并同意</button>
+  </view>
+</view>

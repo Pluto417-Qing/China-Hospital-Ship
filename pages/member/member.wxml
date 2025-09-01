@@ -1,0 +1,55 @@
+<!-- member.wxml -->
+<view class="member-container">
+  <!-- 用户信息区域 -->
+  <view class="user-info-card" wx:if="{{hasRegistered}}">
+    <view class="user-header">
+      <text class="user-name">{{userInfo.nickname || '未设置昵称'}}</text>
+      <text class="user-rewards">⭐ {{userInfo.rewards || 0}}</text>
+    </view>
+    <view class="user-details">
+      <text>生日: {{userInfo.birthDate || '未设置'}}</text>
+      <text>地区: {{userInfo.regionText || '未设置'}}</text>
+    </view>
+    <view class="user-actions">
+      <button class="edit-btn" bindtap="onEdit">编辑资料</button>
+      <button class="logout-btn" bindtap="onLogout">退出登录</button>
+    </view>
+  </view>
+
+  <!-- 未登录状态 -->
+  <view class="login-prompt" wx:else>
+    <text>您还没有登录</text>
+    <view class="auth-buttons">
+      <button class="register-btn" bindtap="onRegister">注册</button>
+      <button class="login-btn" bindtap="onLogin">登录</button>
+    </view>
+  </view>
+
+  <!-- 读后感区域 -->
+  <view class="thoughts-section" wx:if="{{hasRegistered}}">
+    <view class="section-header">
+      <text class="section-title">我的读后感</text>
+      <text class="thoughts-count">(共{{readingThoughts.length}}篇)</text>
+    </view>
+
+    <view class="month-groups" wx:if="{{monthGroups.length > 0}}">
+      <view class="month-group" wx:for="{{monthGroups}}" wx:key="month">
+        <text class="month-title">{{item.month}}</text>
+        <view class="thoughts-list">
+          <view class="thought-item" wx:for="{{item.thoughts}}" wx:key="id" bindtap="onViewThoughtDetail" data-thought="{{item}}">
+            <view class="thought-content">{{item.content}}</view>
+            <view class="thought-meta">
+              <text class="thought-time">{{item.time}}</text>
+              <text class="thought-rewards">⭐ {{item.rewards}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:else>
+      <text>还没有提交过读后感</text>
+      <text>快去写下你的第一份感想吧！</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+<view class="article-item" bindtap="onArticleTap" data-id="{{article.id}}">
+  <image class="article-image" src="{{article.image}}" mode="aspectFill"></image>
+  <view class="article-content">
+    <text class="article-title">《{{article.type}} · {{article.title}}》</text>
+    <text class="article-date">{{article.date}}</text>
+  </view>
+</view>

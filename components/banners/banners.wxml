@@ -1,0 +1,8 @@
+<!--components/banners/banners.wxml-->
+<!-- Banner Swiper -->
+<swiper class="banner-swiper" indicator-dots="true" autoplay="true" interval="5000" circular="true">
+    <swiper-item wx:for="{{banners}}" wx:key="id">
+      <image class="banner-image" src="{{item.image}}" mode="aspectFill"></image>
+      <!-- <view class="banner-title">{{item.title}}</view> -->
+    </swiper-item>
+  </swiper>

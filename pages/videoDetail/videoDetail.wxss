@@ -1,0 +1,23 @@
+/* pages/videoDetail/videoDetail.wxss */
+.video-container {
+  width: 100%;
+}
+
+.video-content {
+  text-align: center;
+}
+
+.back-btn {
+  position: absolute;
+  top: 32rpx;
+  left: 32rpx;
+  z-index: 10;
+  background: rgba(255,255,255,0.85);
+  color: #1e293b;
+  font-size: 32rpx;
+  padding: 12rpx 32rpx;
+  border-radius: 32rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+

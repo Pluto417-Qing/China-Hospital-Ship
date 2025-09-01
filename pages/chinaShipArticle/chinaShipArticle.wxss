@@ -1,0 +1,119 @@
+/* pages/chinaShipArticle/chinaShipArticle.wxss */
+
+/* 头部图片 + 标题 */
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.header image {
+  width: 350px;
+  height: 230px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 音频播放器 */
+.audio-player {
+  width: 90%;
+  margin: 10px;
+  padding: 5px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.audio-controls {
+ display: flex;
+}
+
+.play-btn {
+  display: inline-block;
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 20%;
+  height: 40px;
+}
+
+.play-btn image {
+  width: 100%;
+  height: 100%;
+}
+
+.progress-container {
+  display: flex;
+  flex-direction: row;
+  width: 200%;
+  align-items: center;
+}
+
+.time {
+  font-size: 12px;
+  color: #666;
+  min-width: 40px;
+  text-align: center;
+}
+
+slider {
+  flex: 1;
+  margin: 0 10px;
+}
+
+/* 正文部分 */
+.words {
+  width: 80%;
+  padding: 20px;
+
+  border-radius: 10px;
+  line-height: 200%;
+  /* box-shadow: 7px 7px 5px rgb(209, 209, 209); */
+
+  /* background-color: #ffffff; */
+}
+
+.title {
+  font-size: 20px;
+  margin-top: 10px;
+  /* color: red; */
+  text-align: left;
+}
+
+.subTitle {
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.content-section {
+  font-size: 18px;
+  text-align: justify;
+}
+
+.preserve-whitespace {
+  white-space: pre-wrap; /* 保留空格和换行 */
+}
+
+/* .peopleIntro {
+  color: rgb(16, 184, 38);
+}
+
+.story {
+  color: purple;
+}
+
+.healthKnowledge {
+  color: rgb(7, 133, 184);
+}
+
+.doctors {
+  color: orangered;
+} */
+
+/* 评价 */
+.comment {
+  width: 100%;
+  margin-top: 10%;
+}

@@ -1,0 +1,33 @@
+<view class="container">
+  <form bindsubmit="onSubmit">
+    <view class="form-item">
+      <text class="label">会员名称</text>
+      <input name="nickname" class="input" placeholder="默认为您的微信号" bindinput="onNicknameInput" value="{{nickname}}" />
+    </view>
+    <view class="form-item">
+      <text class="label">出生年份</text>
+      <picker mode="date" fields="year" bindchange="onBirthChange">
+        <view class="picker">{{birthDate || '请选择'}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="label">所在省市</text>
+      <picker mode="multiSelector" range="{{regionArray}}" bindchange="onRegionChange" bindcolumnchange="onRegionColumnChange" value="{{regionIndex}}">
+        <view class="picker">{{regionText || '请选择'}}</view>
+      </picker>
+    </view>
+    <view class="form-item rules-container">
+      <checkbox-group bindchange="onProtocolChange" value="{{agreeProtocol ? ['agree'] : []}}">
+        <label>
+          <checkbox value="agree" />我已阅读并同意《读者注册协议》
+        </label>
+      </checkbox-group>
+      <navigator url="/pages/registerAgreement/registerAgreement" class="rules">查看协议</navigator>
+    </view>
+    <view class="buttons">
+      <button class="submit-btn" form-type="submit" style="position: relative; left: 0rpx; top: 1rpx">{{isEditMode ? '保存修改' : '提交注册'}}</button>
+      <button class="back-btn"  bindtap="onBackHome">返回首页</button>
+    </view>
+  </form>
+</view>
+

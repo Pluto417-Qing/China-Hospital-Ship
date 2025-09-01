@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/register/register",
+    "pages/member/member",
+    "pages/registerAgreement/registerAgreement",
+    "pages/articles/moreArticles",
+    "pages/chinaShipArticle/chinaShipArticle",
+    "pages/videoDetail/videoDetail",
+    "pages/subjectsPort/subjectsPort",
+    "pages/videos/videos"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "中国医院船",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1aad19",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "/images/icons/home.png",
+        "selectedIconPath": "/images/icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/member/member",
+        "text": "读者中心",
+        "iconPath": "/images/icons/home.png",
+        "selectedIconPath": "/images/icons/home-active.png"
+      }
+    ]
+  },
+  "renderer": "webview",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

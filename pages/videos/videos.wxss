@@ -1,0 +1,31 @@
+/* pages/videos/videos.wxss */
+.video-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24rpx;
+  padding: 3%;
+
+  width: 100%;
+}
+
+.video-list video {
+  flex: 0 0 45%;      
+  height: 250%;
+  margin-bottom: 10rpx;
+  box-sizing: border-box;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}

@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="header">
+    <image class="audio-cover" src="{{imageUrl}}" mode="aspectFill"></image>
+  </view>
+  
+  <!-- 修改后的音频播放器 -->
+  <view class="audio-player" wx:if="{{audioUrl}}">
+    <view class="audio-controls">
+      <button class="play-btn" bind:tap="togglePlay">
+        <image wx:if="{{!isPlaying}}" src="cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/icons/play.png" mode="aspectFit"></image>
+        <image wx:else src="cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/icons/pause.png" mode="aspectFit"></image>
+      </button>
+
+      <view class="progress-container">
+        <text class="time">{{currentTimeStr}}</text>
+        <slider activeColor="#1E90FF" block-size="12" value="{{currentTime}}" max="{{duration}}" bindchange="onSliderChange" block-color="#1E90FF" bindchanging="onSliderChanging"
+        ></slider>
+        <text class="time">{{durationStr}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="words">
+    <view class="title"><text>《{{type}} · {{title}}》</text></view>
+    <view class="content-section peopleIntro">
+      <view class="subTitle"><text>【 人物介绍 】</text></view>
+      <view class="content preserve-whitespace"><text decode>{{peopleIntro}}</text></view>
+    </view>
+    <view class="content-section story">
+      <view class="subTitle"><text>【 病人故事 】</text></view>
+      <view class="content preserve-whitespace"><text decode>{{story}}</text></view>
+    </view>
+    <view class="content-section healthKnowledge">
+      <view class="subTitle"><text>【 健康知识 】</text></view>
+      <view class="preserve-whitespace" content><text decode>{{healthKnowledge}}</text></view>
+    </view>
+    <view class="content-section doctors">
+      <view class="subTitle"><text>【 科普医师 】</text></view>
+      <view  class="content preserve-whitespace"><text decode>{{doctors}}</text></view>
+    </view>
+  </view>
+
+  <!-- 评价 -->
+  <comment class="comment">
+  </comment>
+</view>

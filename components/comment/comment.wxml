@@ -1,0 +1,86 @@
+<!--components/comment.wxml-->
+<view class="comment-container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <view class="title-section">
+      <text class="title">分享你的阅读感悟</text>
+      <text class="subtitle">写下此刻的想法，记录阅读的美好</text>
+    </view>
+    <view class="reward-badge">
+      <text class="reward-text">+1⭐</text>
+    </view>
+  </view>
+
+  <!-- 输入区域 -->
+  <view class="input-section">
+    <view class="input-header">
+      <text class="input-title">读后感内容</text>
+      <text class="char-count">{{content.length}}/500</text>
+    </view>
+    <view class="textarea-wrapper">
+      <textarea 
+        class="thought-textarea"
+        placeholder="分享你的阅读感受..."
+        placeholder-class="placeholder"
+        value="{{content}}"
+        bindinput="onInputChange"
+        maxlength="500"
+        auto-height
+        show-confirm-bar="{{false}}"
+      ></textarea>
+      <view class="textarea-border"></view>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-section">
+    <button 
+      class="submit-btn {{isSubmitting ? 'submitting' : ''}} {{!content ? 'disabled' : ''}}"
+      bindtap="makeComments"
+      hover-class="btn-hover"
+      disabled="{{isSubmitting || !content}}"
+    >
+      <view class="btn-content">
+        <text class="btn-icon" wx:if="{{!isSubmitting}}">📝</text>
+        <text class="btn-loading" wx:else>⏳</text>
+        <text class="btn-text">
+          {{isSubmitting ? '提交中...\n' : (content ? '发布读后感\n' : '请输入读后感\n')}}
+        </text>
+      </view>
+    </button>
+  </view>
+
+  <!-- 已提交内容 -->
+  <view class="submitted-section" wx:if="{{submittedThoughts.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">我的阅读记录</text>
+      <text class="section-count">({{submittedThoughts.length}}篇)</text>
+      <view class="refresh-btn" bindtap="loadThoughtsFromCloud">
+        <text class="refresh-icon">🔄</text>
+        <text class="refresh-text">刷新</text>
+      </view>
+    </view>
+
+    <view class="thoughts-list">
+      <view class="thought-card" wx:for="{{submittedThoughts}}" wx:key="id">
+        <view class="card-header">
+          <text class="thought-time">{{item.time}}</text>
+          <view class="reward-indicator">
+            <text class="star-icon">⭐</text>
+            <text class="reward-count">{{item.rewards}}</text>
+          </view>
+        </view>
+        <view class="thought-content">{{item.content}}</view>
+        <view class="card-footer">
+          <text class="status-badge">已发布</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <view class="empty-icon">📚</view>
+    <text class="empty-title">还没有读后感</text>
+    <text class="empty-desc">写下第一篇读后感，开启你的阅读记录之旅</text>
+  </view>
+</view>

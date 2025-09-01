@@ -1,0 +1,53 @@
+.container {
+  width: 100%;
+  padding: 2%;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5%;
+}
+
+.label {
+  width: 30%;
+  min-width: 30%;
+  font-size: large;
+  margin-right: 10%;
+  color: rgb(5, 151, 151);
+  text-align: center;
+}
+
+.input {
+  background-color: rgba(241, 240, 240, 0.5);
+  border-radius: 10px;
+  width: 100%;
+  min-height: 30px;
+  padding: 2%;
+}
+
+.rules-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.rules {
+  margin-top: 2%;
+  color: rgb(4, 83, 230);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.submit-btn,
+.back-btn {
+  max-width: 120px;
+  background-color: rgb(5, 151, 151);
+  color: rgb(255, 255, 255);
+}
+

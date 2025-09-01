@@ -1,0 +1,17 @@
+<!--pages/subjectsPort/subjectsPort.wxml-->
+<!-- 学科分类导航 -->
+<view class="section-header">
+  <text class="section-title">我的地球村</text>
+</view>
+<scroll-view class="subject-nav" scroll-x="true" show-scrollbar="false">
+  <view class="subject-item {{selectedIndex === index ? 'active' : ''}}"
+        wx:for="{{subjects}}" wx:key="code"
+        bindtap="onSubjectTap" data-index="{{index}}">
+    <text>{{item.name}}</text>
+  </view>
+</scroll-view>
+
+<!-- 下面可以放筛选后的内容 -->
+<view class="subject-content">
+  <text>当前选择：{{subjects[selectedIndex].name}}</text>
+</view>

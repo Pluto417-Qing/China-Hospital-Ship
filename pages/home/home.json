@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "中国医院船",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "backgroundColor": "#f7f7f7",
+  "usingComponents": {
+    "article": "/components/article/article",
+    "banners": "/components/banners/banners",
+    "video": "/components/video/video"
+  }
+} 
