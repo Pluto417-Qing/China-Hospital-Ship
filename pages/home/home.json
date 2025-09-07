@@ -6,6 +6,7 @@
   "usingComponents": {
     "article": "/components/article/article",
     "banners": "/components/banners/banners",
-    "video": "/components/video/video"
+    "video": "/components/video/video",
+    "slogan": "/components/slogan/slogan"
   }
 } 

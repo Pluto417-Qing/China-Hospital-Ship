@@ -1,0 +1,7 @@
+<!--components/slogan/slogan.wxml-->
+<view wx:if="{{show}}" class="popup-mask">
+  <view class="popup-panel">
+    <slot></slot>
+    <button class="popup-btn" bindtap="onClose">关闭</button>
+  </view>
+</view>

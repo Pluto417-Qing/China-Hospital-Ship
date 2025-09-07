@@ -16,11 +16,12 @@ App({
         // env 参数决定接下来小程序发起的云开发调用会默认请求到哪个云环境的资源
         // 此处请填入环境 ID, 环境 ID 可打开云控制台查看
         // 如不填则使用默认环境（第一个创建的环境）
-        env: 'cloudbase-1g4b1jysc952b1f5', // 替换为你的环境ID
+        env: 'cloudbase-1gl4e5sia9d92880', // 替换为你的环境ID
         traceUser: true,
         success: () => {
+          // this.initArticles();
           // 获取用户的openid
-          this.getOpenid();
+          // this.getOpenid();
         }
       })
     }
@@ -40,6 +41,18 @@ App({
       },
       fail: err => {
         console.error('获取openid失败', err)
+      }
+    })
+  },
+
+  initArticles: function() {
+    wx.cloud.callFunction({
+      name: 'initArticles',
+      success: res => {
+        console.error('init articles成功', res)
+      },
+      fail: err => {
+        console.error('init articles失败', err)
       }
     })
   }

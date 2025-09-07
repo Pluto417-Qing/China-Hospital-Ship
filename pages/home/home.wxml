@@ -1,6 +1,24 @@
+<slogan show="{{showWelcome}}" bind:close="onCloseWelcome">
+  <view style="white-space:pre-line;">
+    少年
+    欢迎你登船
+    这是中国医院船
+    这是二零四九年
+    我们正在全球航行
+    构建人类命运共同体
+
+    希望你秉持心与力
+    朝向人类文明之未来
+    我们将陪伴你
+    直到你十八岁
+    加油啊
+    大中华的少年
+  </view>
+</slogan>
+
 <view class="container">
   <!-- Calligrahy -->
-  <image class="calligraphy" src="cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/calligraphy.jpg"></image>
+  <image class="calligraphy" src="cloud://cloudbase-1gl4e5sia9d92880.636c-cloudbase-1gl4e5sia9d92880-1377444627/calligraphy.png"></image>
 
   <!-- Banner Swiper -->
   <banners class="banner-swiper"></banners>

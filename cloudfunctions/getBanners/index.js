@@ -20,7 +20,7 @@ exports.main = async (event) => {
     ]
 
     const fileList = bannerFiles.map(name => ({
-      fileID: `cloud://cloudbase-1g4b1jysc952b1f5.636c-cloudbase-1g4b1jysc952b1f5-1367750649/banners/${name}`,
+      fileID: `cloud://cloudbase-1gl4e5sia9d92880.636c-cloudbase-1gl4e5sia9d92880-1377444627/banners/${name}`,
       maxAge: 60 * 60
     }))
 

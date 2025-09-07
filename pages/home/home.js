@@ -1,5 +1,6 @@
 Page({
   data: {
+    showWelcome: true,
     articles: [],
 
     filteredHealthArticles: [],
@@ -13,9 +14,29 @@ Page({
   },
   
   onLoad: function() {
+    this.setData({ showWelcome: true });
+    this.initArticles();
     this.getArticles();
     this.getOfflineActivity(); 
     this.getVideos();
+  },
+
+  onCloseWelcome() {
+    this.setData({
+      showWelcome: false
+    })
+  },
+
+  initArticles: function() {
+    wx.cloud.callFunction({
+      name: 'initArticles',
+      success: res => {
+        console.error('init articles成功', res)
+      },
+      fail: err => {
+        console.error('init articles失败', err)
+      }
+    })
   },
 
   // 获取视频

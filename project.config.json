@@ -49,7 +49,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "3.9.0",
-  "appid": "wxd938107e6d483d76",
+  "appid": "wx50a29928c33befaf",
   "projectname": "会员注册小程序",
   "condition": {},
   "simulatorPluginLibVersion": {},
@@ -58,5 +58,6 @@
     "tabSize": 4
   },
   "ignoreDevUnusedFiles": false,
-  "ignoreUploadUnusedFiles": false
+  "ignoreUploadUnusedFiles": false,
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/"
 }
