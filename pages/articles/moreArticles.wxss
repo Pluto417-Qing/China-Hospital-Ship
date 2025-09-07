@@ -1,82 +1,33 @@
 /* pages/articles/moreArticles.wxss */
 /* 文章区域样式 */
 .article-section {
-  width: 100%;
-  background-color: white;
-  padding: 10px;
+  width: 90vw;
+  min-height: 37vw;
+  padding: 18px 14px 14px 14px;
+  margin: 24rpx auto 0 auto;
+  border-radius: 18rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.06);
 }
 
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px 10px;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 8px;
 }
 
 .section-title {
-  font-size: 18px;
+  font-size: 36rpx;
   font-weight: bold;
   color: white;
+  border-left: 8rpx solid white;
+  padding-left: 18rpx;
 }
 
 .section-more {
-  color: #888;
-  font-size: 14px;
-}
-
-.article-list {
-  padding: 10px 0;
-}
-
-.article-item {
-  display: flex;
-  padding: 15px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.article-image {
-  width: 130px;
-  height: 100px;
-  border-radius: 5px;
-  margin-right: 15px;
-  margin-left: 15px;
-}
-
-.article-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.article-title {
-  margin-top: 30px;
-  margin-left: 60px;
-  font-size: 16px;
-  color: #333;
-  font-weight: bold;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.article-summary {
-  font-size: 14px;
-  color: #666;
-  margin: 5px 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.article-date {
-  font-size: 12px;
-  color: #999;
-  margin-left: 63px;
+  color: gray;
+  font-size: 28rpx;
+  background: #f0f7ff;
+  border-radius: 16rpx;
+  padding: 2rpx 18rpx;
 }

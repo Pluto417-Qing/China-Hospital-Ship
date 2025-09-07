@@ -1,6 +1,6 @@
-<view class="article-item" bindtap="onArticleTap" data-id="{{article.id}}">
-  <image class="article-image" src="{{article.image}}" mode="aspectFill"></image>
-  <view class="article-content">
+<view class="article-card" bindtap="onArticleTap" data-id="{{article.id}}">
+  <image class="article-img" src="{{article.image}}" mode="aspectFill"></image>
+  <view class="article-info">
     <text class="article-title">《{{article.type}} · {{article.title}}》</text>
     <text class="article-date">{{article.date}}</text>
   </view>

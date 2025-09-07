@@ -1,15 +1,15 @@
 <!--pages/articles/moreArticles.wxml-->
-<view class="article-section" style="background-color: {{bgColor}};">
-    <view class="section-header">
-      <text class="section-title">{{chosenArticleSection}}</text>
-    </view>
-    
-    <view class="article-list">
-      <article 
-        wx:for="{{articles.length > 2 ? articles.slice(0,2) : articles}}" 
-        wx:key="id" 
-        article="{{item}}"
-        bind:itemtap="onArticleTap"
-      ></article>
-    </view>
+<view class="article-section" style="background-color: #6BB392">
+  <view class="section-header">
+    <view class="section-title">中国医院船</view>
+  </view>
+  <block 
+	wx:for="{{articles}}"  
+	wx:key="id"
+	>
+    <article 
+      article="{{item}}"
+      bind:itemtap="onArticleTap"
+    ></article>
+  </block>
 </view>

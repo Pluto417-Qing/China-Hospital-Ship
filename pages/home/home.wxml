@@ -1,5 +1,6 @@
+<!-- 顶部欢迎弹窗 -->
 <slogan show="{{showWelcome}}" bind:close="onCloseWelcome">
-  <view style="white-space:pre-line;">
+  <view style="white-space:pre-line; font-size:32rpx; color:#222;">
     少年
     欢迎你登船
     这是中国医院船
@@ -16,62 +17,66 @@
   </view>
 </slogan>
 
-<view class="container">
-  <!-- Calligrahy -->
-  <image class="calligraphy" src="cloud://cloudbase-1gl4e5sia9d92880.636c-cloudbase-1gl4e5sia9d92880-1377444627/calligraphy.png"></image>
+<!-- 书法展示 -->
+<image class="calligraphy" src="cloud://cloudbase-1gl4e5sia9d92880.636c-cloudbase-1gl4e5sia9d92880-1377444627/calligraphy.png"></image>
+<view class="divider"></view>
 
-  <!-- Banner Swiper -->
-  <banners class="banner-swiper"></banners>
+<!-- 轮播图 Banner -->
+<banners class="banner-swiper"></banners>
 
-  <!-- Offline Activities -->
-  <view class="activities" wx:if="{{hasOffLineActivity && offlineActivityText}}" bind:tap="showActivityDetail">线下活动小通知----{{offlineActivityText.title}}</view>
-  <view class="activities" wx:else></view>
-  
-  <!-- Articles -->
-  <!-- 中国医院船 -->
-  <view class="article-section" style="background-color: #6BB392">
-    <view class="section-header">
-      <text class="section-title">中国医院船</text>
-      <text class="section-more" bind:tap="seeMoreArticles" data-type="中国医院船">更多</text>
-    </view>
-    <view class="article-list">
-      <article 
-        wx:for="{{filteredHealthArticles.length > 2 ? filteredHealthArticles.slice(0,2) : filteredHealthArticles}}" 
-        wx:key="id" 
-        article="{{item}}"
-        bind:itemtap="onArticleTap"
-      ></article>
-    </view>
+<!-- 活动通知 -->
+<view class="activities" wx:if="{{hasOffLineActivity && offlineActivityText}}" bind:tap="showActivityDetail">
+  线下活动小通知——{{offlineActivityText.title}}
+</view>
+<view class="activities" wx:else></view>
+
+<!-- 中国医院船文章区块 -->
+<view class="article-section" style="background-color: #6BB392">
+  <view class="section-header">
+    <view class="section-title">中国医院船</view>
+    <view class="section-more" bindtap="seeMoreArticles" data-type="中国医院船">更多</view>
   </view>
-  <!-- 少年百科港 -->
-  <view class="article-section" style="background-color: #C02C38;">
-    <view class="section-header">
-      <text class="section-title">少年百科港</text>
-      <text class="section-more" bind:tap="seeMorePortArticles" data-type="少年百科港">更多</text>
-    </view>
-    <view class="article-list">
-      <article 
-        wx:for="{{filteredNutritionArticles.length > 2 ? filteredNutritionArticles.slice(0,2) : filteredNutritionArticles}}" 
-        wx:key="id" 
-        article="{{item}}"
-        bind:itemtap="onArticleTap"
-      ></article>
-    </view>
+  <block 
+	wx:for="{{filteredHealthArticles.length > 2 ? filteredHealthArticles.slice(0,2) : filteredHealthArticles}}"  
+	wx:key="id"
+	>
+    <article 
+      article="{{item}}"
+      bind:itemtap="onArticleTap"
+    ></article>
+  </block>
+</view>
+
+<!-- 少年百科港 -->
+<view class="article-section" style="background-color: #C02C38;">
+  <view class="section-header">
+    <view class="section-title">少年百科港</view>
+    <view class="section-more" bindtap="seeMorePortArticles">更多</view>
   </view>
-  <!-- 我的地球村 -->
-  <view class="article-section" style="background-color: #3bcde7;">
-    <view class="section-header">
-      <text class="section-title">我的地球村</text>
-      <text class="section-more" bind:tap="seeMoreVideos" data-type="我的地球村">更多</text>
-    </view>
-    <view class="video-list">
-      <video 
+  <block 
+	wx:for="{{filteredNutritionArticles.length > 2 ? filteredNutritionArticles.slice(0,2) : filteredNutritionArticles}}"  
+	wx:key="id"
+	>
+    <article 
+      article="{{item}}"
+      bind:itemtap="onArticleTap"
+    ></article>
+  </block>
+</view>
+
+<!-- 我的地球村 -->
+<!-- 视频区块 -->
+<view class="article-section" style="background-color: #3bcde7;">
+  <view class="section-header">
+    <view class="section-title">我的地球村</view>
+    <view class="section-more" bindtap="seeMoreVideos">更多</view>
+  </view>
+  <block wx:for="{{earthVideosToShow}}" wx:key="title">
+	<video 
         wx:for="{{earthVideosToShow}}" 
         wx:key="id" 
         video="{{item}}"
         bind:videotap="onVideoTap"
-      ></video>
-    </view>
-  </view>
-</view> 
-
+    ></video>
+  </block>
+</view>
